@@ -13,6 +13,7 @@ const validJson = async (ctx, next) => {
                 done: false,
                 status: "Invalid json"
             };
+            return;
         }
     }
     return await next();

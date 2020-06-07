@@ -1,14 +1,16 @@
 const Koa = require("koa");
 const Router = require("koa-router");
 const passport = require("koa-passport");
-const koaBody = require("koa-body");
+const bodyParser = require("koa-bodyparser");
 
 const app = new Koa();
 const router = new Router({ prefix: "/api" });
 
 // Middlewares
+app.use(bodyParser({
+    enableTypes: ["text", "json"]
+}));
 app.use(passport.initialize());
-app.use(koaBody());
 
 // Importing routes
 const userRouter = require("./routes/auth");
