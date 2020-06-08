@@ -15,9 +15,10 @@ router
         // Login
         try {
             const user = await authenticate(ctx);
+            const token = createToken(user._id);
             ctx.body = {
                 done: true,
-                token: createToken(user._id),
+                token,
                 user: viewUser(user)
             };
         } catch (err) {
@@ -32,10 +33,11 @@ router
         // Register
         const user = await createUser(ctx.request.body.user.login, ctx.request.body.user.password);
         if (verifyUser(user)) {
+            const token = createToken(user._id);
             ctx.body = {
                 done: true,
                 user: viewUser(user),
-                token: createToken(user._id)
+                token
             };
         } else {
             ctx.status = 400;

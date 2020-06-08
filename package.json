@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "cross-env KEY=key node app.js"
+    "start": "cross-env KEY=key node app.js",
+    "test": "mocha tests/*.js"
   },
   "repository": {
     "type": "git",
