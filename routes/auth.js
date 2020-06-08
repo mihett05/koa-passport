@@ -34,7 +34,8 @@ router
         if (verifyUser(user)) {
             ctx.body = {
                 done: true,
-                user: viewUser(user)
+                user: viewUser(user),
+                token: createToken(user._id)
             };
         } else {
             ctx.status = 400;
@@ -45,7 +46,11 @@ router
         }
     })
     .get("/", jwt, async ctx => {
-        ctx.body = "Nice";
+        // Get login by token (just for test jwt auth protect)
+        ctx.body = {
+            done: true,
+            user: viewUser(ctx.state.user)
+        };
     })
     
 
