@@ -21,6 +21,7 @@ router
                 user: viewUser(user)
             };
         } catch (err) {
+            ctx.status = 400;
             ctx.body = {
                 done: false,
                 status: "Incorrect login or password"
@@ -36,6 +37,7 @@ router
                 user: viewUser(user)
             };
         } else {
+            ctx.status = 400;
             ctx.body = {
                 done: false,
                 status: "Login is already taken by another user"

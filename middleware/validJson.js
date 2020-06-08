@@ -9,6 +9,7 @@ const validJson = async (ctx, next) => {
             } catch (err) {}
         }
         if (!parseJson) {
+            ctx.status = 400;
             ctx.body = {
                 done: false,
                 status: "Invalid json"
